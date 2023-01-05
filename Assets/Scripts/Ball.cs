@@ -23,12 +23,23 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.name == "Player"){
             Rigidbody2D collisionRb = collision.gameObject.GetComponent<Rigidbody2D>();
             Vector2 newVelocity = new Vector2(1.5f, 1.5f);
-            rb.velocity = newVelocity;
+            rb.velocity = newVelocity * 5;
         }
-        if(collision.gameObject.name == "Oppopnent"){
+        if(collision.gameObject.name == "Opponent"){
             Rigidbody2D collisionRb = collision.gameObject.GetComponent<Rigidbody2D>();
             Vector2 newVelocity = new Vector2(-1.5f, 1.5f);
-            rb.velocity = newVelocity;
+            rb.velocity = newVelocity * 5;
+        }
+        if(collision.gameObject.name == "LeftWall"){
+            rb.velocity = new Vector2(-7, rb.velocity.y);
+            Debug.Log("Here");
+        }
+        if(collision.gameObject.name == "RightWall"){
+            rb.velocity = new Vector2(-7, rb.velocity.y);
+        }
+        if(collision.gameObject.name == "Ceiling"){
+            rb.velocity = new Vector2(rb.velocity.x, -7);
+
         }
     }
 }
